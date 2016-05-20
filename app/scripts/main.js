@@ -12,6 +12,10 @@ require.config({
                 'jquery'
             ],
             exports: 'Backbone'
+        },
+        highcharts: {
+            exports: 'Highcharts',
+            deps: ['jquery']
         }
     },
     paths: {
