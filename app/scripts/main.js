@@ -17,13 +17,15 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone/backbone',
+        layoutmanager: '../bower_components/layoutmanager/backbone.layoutmanager',
+        text: '../bower_components/requirejs-text/text',
+        highcharts: '../bower_components/highcharts-release/highcharts',
         underscore: '../bower_components/underscore/underscore'
     }
 });
 
 require([
-    'backbone'
-], function (Backbone) {
-    Backbone.history.start();
-    console.log('Hello from Backbone!');
+    'application'
+], function (App) {
+    App.init();
 });
