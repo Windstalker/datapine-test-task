@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         },
         watch: {
             styles: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*{.css, .scss}'],
+                files: ['<%= yeoman.app %>/styles/**/*{.css, .scss}'],
                 tasks: ['sass', 'autoprefixer']
             },
             livereload: {
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%= yeoman.app %>/*.html',
+                    '<%= yeoman.app %>/**/*.html',
                     '.tmp/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -109,11 +109,9 @@ module.exports = function (grunt) {
         },
         sass: {
             dist: {
-                expand: true,
-                dot: true,
-                cwd: '<%= yeoman.app %>/styles',
-                dest: '.tmp/styles/',
-                src: '{,*/}*{.css, .scss}'
+                files: {
+                    '\.tmp/styles/main.css': ['<%= yeoman.app %>/styles/{,*/}*.scss']
+                }
             }
         },
         autoprefixer: {
@@ -293,19 +291,16 @@ module.exports = function (grunt) {
                 'createDefaultTemplate',
                 'jst',
                 'sass'
-                // 'copy:styles'
             ],
             test: [
                 'createDefaultTemplate',
                 'jst',
                 'sass'
-                // 'copy:styles'
             ],
             dist: [
                 'createDefaultTemplate',
                 'jst',
                 'sass',
-                // 'copy:styles',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
