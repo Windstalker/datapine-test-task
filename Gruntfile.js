@@ -21,8 +21,8 @@ module.exports = function (grunt) {
         },
         watch: {
             styles: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-                tasks: ['copy:styles', 'autoprefixer']
+                files: ['<%= yeoman.app %>/styles/{,*/}*{.css, .scss}'],
+                tasks: ['sass', 'autoprefixer']
             },
             livereload: {
                 options: {
@@ -107,9 +107,18 @@ module.exports = function (grunt) {
                 }
             }
         },
+        sass: {
+            dist: {
+                expand: true,
+                dot: true,
+                cwd: '<%= yeoman.app %>/styles',
+                dest: '.tmp/styles/',
+                src: '{,*/}*{.css, .scss}'
+            }
+        },
         autoprefixer: {
             options: {
-                browsers: ['last 1 version']
+                browsers: ['last 2 versions']
             },
             dist: {
                 files: [{
@@ -283,17 +292,20 @@ module.exports = function (grunt) {
             server: [
                 'createDefaultTemplate',
                 'jst',
-                'copy:styles'
+                'sass'
+                // 'copy:styles'
             ],
             test: [
                 'createDefaultTemplate',
                 'jst',
-                'copy:styles'
+                'sass'
+                // 'copy:styles'
             ],
             dist: [
                 'createDefaultTemplate',
                 'jst',
-                'copy:styles',
+                'sass',
+                // 'copy:styles',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
