@@ -1,20 +1,18 @@
 define([
     'backbone',
-    'layoutmanager',
+    'marionette',
     'router/router'
-], function(Backbone, Layout, Router) {
+], function(Backbone, Mn, Router) {
     'use strict';
 
-    Layout.configure({
-        manage: true
-    });
-
-    function initialize() {
-        var router = new Router();
+    function onStart() {
         Backbone.history.start();
     }
 
-    return {
-        init: initialize
-    };
+    return Mn.Application.extend({
+        initialize: function() {
+            this.router = new Router();
+            this.on('start', onStart);
+        }
+    });
 });

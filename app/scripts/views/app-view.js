@@ -1,13 +1,13 @@
 define([
     'jquery',
     'underscore',
-    'layoutmanager',
+    'backbone',
     './menu',
     'text!../templates/app-view.html'
-], function($, _, Layout, Menu, template) {
+], function($, _, Backbone, Menu, template) {
     'use strict';
 
-    return Layout.extend({
+    return Backbone.View.extend({
         el: $('#app'),
         template: _.template(template),
         views: {

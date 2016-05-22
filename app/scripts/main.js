@@ -21,7 +21,7 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone/backbone',
-        layoutmanager: '../bower_components/layoutmanager/backbone.layoutmanager',
+        marionette: '../bower_components/backbone.marionette/lib/backbone.marionette',
         text: '../bower_components/requirejs-text/text',
         highcharts: '../bower_components/highcharts-release/highcharts',
         underscore: '../bower_components/underscore/underscore'
@@ -31,5 +31,7 @@ require.config({
 require([
     'application'
 ], function (App) {
-    App.init();
+    var app = new App();
+
+    app.start();
 });

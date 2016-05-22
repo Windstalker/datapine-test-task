@@ -6,7 +6,6 @@ define([
     'use strict';
 
     return Backbone.View.extend({
-        manage: true,
         template: _.template(template)
     });
 });
