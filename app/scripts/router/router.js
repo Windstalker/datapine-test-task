@@ -1,34 +1,60 @@
 define([
     'marionette',
+    '../models/charts-collection',
     '../views/app-view',
     '../views/about',
     '../views/menu',
     '../views/chart-list',
     '../views/chart-view',
-], function(Mn, AppView, About, Menu, ChartList, ChartView) {
+], function(
+    Mn,
+    ChartsCollection,
+    AppView,
+    AboutView,
+    MenuView,
+    ChartListView,
+    ChartDetailsView
+) {
     'use strict';
 
     var routes = {
-        '': 'showCharts',
-        'charts': 'showCharts',
-        'charts/:id': 'showChartView',
-        'about': 'showAbout'
+        '': 'onChartsRoute',
+        'charts(/)(:id)': 'onChartsRoute',
+        'about': 'showAboutView'
     };
 
     var Controller = Mn.Object.extend({
         initialize: function() {
+            this.charts = new ChartsCollection();
             this.appView = new AppView();
             this.appView.render();
-            this.appView.showChildView('menu', new Menu());
+            this.appView.showChildView('menu', new MenuView());
         },
-        showAbout: function() {
-            this.appView.showChildView('page', new About());
+        showAboutView: function() {
+            this.appView.showChildView('page', new AboutView());
         },
-        showChartView: function() {
-            this.appView.showChildView('page', new ChartView());
+        onChartsRoute: function(id) {
+            var self = this;
+            var xhr = this.charts.fetch();
+            xhr.done(function() {
+                if (id !== null) {
+                    return self.showChartDetailsView(id);
+                }
+                self.showCharts();
+            });
+        },
+        showChartDetailsView: function(id) {
+            var chart = this.charts.get(id);
+
+            this.appView.showChildView('page', new ChartDetailsView({
+                model: chart,
+                collection: this.charts
+            }));
         },
         showCharts: function() {
-            this.appView.showChildView('page', new ChartList());
+            this.appView.showChildView('page', new ChartListView({
+                collection: this.charts
+            }));
         }
     });
 

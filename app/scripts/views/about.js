@@ -6,7 +6,7 @@ define([
     'use strict';
 
     return Mn.ItemView.extend({
-        manage: true,
+        className: 'page',
         template: _.template(template)
     });
 });

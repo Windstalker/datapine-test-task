@@ -1,0 +1,16 @@
+<h2><%= title.text %></h2>
+<% if (availableTypes.length > 1) { %>
+<label for="switch-type">Switch chart type:</label>
+<select name="switch-type" id="switch-type">
+    <% for (var i = 0, l = availableTypes.length; i < l; i++) { %>
+    <% var altType = availableTypes[i]; %>
+    <option value="<%= altType %>"
+        <%= altType === chart.type ? 'selected' : '' %> >
+        <%= altType %>
+    </option>
+    <% } %>
+</select>
+<% } %>
+<div class="chart-wrapper">
+
+</div>

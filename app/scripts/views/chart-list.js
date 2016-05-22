@@ -6,6 +6,10 @@ define([
     'use strict';
 
     return Mn.ItemView.extend({
-        template: _.template(template)
+        className: 'page',
+        template: _.template(template),
+        collectionEvents: {
+            'sync': 'render'
+        }
     });
 });

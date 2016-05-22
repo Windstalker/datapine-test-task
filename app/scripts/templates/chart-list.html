@@ -1,1 +1,20 @@
-<div>Charts is here</div>
+<h2>Chart List</h2>
+<p>Please, click on chart in the list to view it.</p>
+<div class="charts-list">
+    <% _.each(items, function(item, i) { %>
+    <% if (i % 2 == 0) { %>
+    <div class="row">
+    <% } %>
+        <div class="columns six chart-thumb-wrapper">
+            <figure>
+                <a href="#charts/<%= item.id %>">
+                    <img width="100%" src="http://dummyimage.com/400x400?=<%= i %>" alt="Chart thumbnail">
+                    <figcaption><%= item.title.text %></figcaption>
+                </a>
+            </figure>
+        </div>
+    <% if ((i + 1) % 2 == 0) { %>
+    </div>
+    <% } %>
+    <% }); %>
+</div>

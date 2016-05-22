@@ -1,9 +1,17 @@
+@import "../fonts/stylesheet.css";
 @import "../bower_components/Skeleton-Sass/scss/skeleton.scss";
 
+$black: #333;
+$white: #fff;
+
+$aliceblue: #E4F1FE;
+$summersky: #1E8BC3;
+$jellybean: #2574A9;
+$ming: #336E7B;
+
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    background: $aliceblue;
+    color: $ming;
 }
 
 .browsehappy {
@@ -13,4 +21,36 @@ body {
     padding: 0.2em 0;
 }
 
-.myclass{}
+.menu {
+    height: 4.5rem;
+    background: $summersky;
+    &-entry {
+        float: left;
+        height: 100%;
+        padding: 0 1rem;
+        a {
+            display: inline-block;
+            height: 4.5rem;
+            line-height: 4.5rem;
+            vertical-align: middle;
+            text-decoration: none;
+            color: $white;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        &:hover {
+            background: $jellybean;
+        }
+    }
+}
+
+.page {
+    padding: 1rem 1rem 2rem;
+}
+
+.chart-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
