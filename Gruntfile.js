@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         },
         watch: {
             styles: {
-                files: ['<%= yeoman.app %>/styles/**/*{.css, .scss}'],
+                files: ['<%= yeoman.app %>/styles/**/*{.css,.scss}'],
                 tasks: ['sass', 'autoprefixer']
             },
             livereload: {
