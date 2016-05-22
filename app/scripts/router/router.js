@@ -2,9 +2,10 @@ define([
     'marionette',
     '../views/app-view',
     '../views/about',
+    '../views/menu',
     '../views/chart-list',
     '../views/chart-view',
-], function(Mn, AppView, About, ChartList, ChartView) {
+], function(Mn, AppView, About, Menu, ChartList, ChartView) {
     'use strict';
 
     var routes = {
@@ -14,20 +15,25 @@ define([
         'about': 'showAbout'
     };
 
-    var controller = {
+    var Controller = Mn.Object.extend({
+        initialize: function() {
+            this.appView = new AppView();
+            this.appView.render();
+            this.appView.showChildView('menu', new Menu());
+        },
         showAbout: function() {
-            console.log(arguments);
+            this.appView.showChildView('page', new About());
         },
         showChartView: function() {
-            console.log(arguments);
+            this.appView.showChildView('page', new ChartView());
         },
         showCharts: function() {
-            console.log(arguments);
+            this.appView.showChildView('page', new ChartList());
         }
-    };
+    });
 
     return Mn.AppRouter.extend({
-        routes: routes,
-        controller: controller
+        appRoutes: routes,
+        controller: new Controller()
     });
 });

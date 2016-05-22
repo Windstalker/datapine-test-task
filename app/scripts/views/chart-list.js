@@ -1,11 +1,11 @@
 define([
     'underscore',
-    'backbone',
+    'marionette',
     'text!../templates/chart-list.html'
-], function(_, Backbone, template) {
+], function(_, Mn, template) {
     'use strict';
 
-    return Backbone.View.extend({
+    return Mn.ItemView.extend({
         template: _.template(template)
     });
 });

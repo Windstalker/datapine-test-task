@@ -1,17 +1,18 @@
 define([
     'jquery',
     'underscore',
-    'backbone',
+    'marionette',
     './menu',
     'text!../templates/app-view.html'
-], function($, _, Backbone, Menu, template) {
+], function($, _, Mn, Menu, template) {
     'use strict';
 
-    return Backbone.View.extend({
-        el: $('#app'),
+    return Mn.LayoutView.extend({
+        el: '#app',
         template: _.template(template),
-        views: {
-            '#menu': new Menu()
+        regions: {
+            menu: '#menu',
+            page: '#page'
         }
     });
 });
