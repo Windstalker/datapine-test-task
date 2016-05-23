@@ -24,7 +24,8 @@ require.config({
         marionette: '../bower_components/backbone.marionette/lib/backbone.marionette',
         text: '../bower_components/requirejs-text/text',
         highcharts: '../bower_components/highcharts-release/highcharts',
-        underscore: '../bower_components/underscore/underscore'
+        underscore: '../bower_components/underscore/underscore',
+        bluebird: '../bower_components/bluebird/js/browser/bluebird.min'
     }
 });
 

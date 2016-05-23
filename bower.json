@@ -4,6 +4,7 @@
   "dependencies": {
     "backbone": "~1.1.2",
     "backbone.marionette": "marionette#~2.4.5",
+    "bluebird": "~3.4.0",
     "highcharts-release": "~4.0.4",
     "jquery": "~1.10.2",
     "layoutmanager": "~1.0.0",
