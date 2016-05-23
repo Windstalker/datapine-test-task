@@ -22,7 +22,7 @@ define([
         },
         changeType: function() {
             var type = this.ui.typeSelect.val();
-            Mn.triggerMethodOn(this.model, 'type:changed', type);
+            Mn.triggerMethodOn(this.model, 'type:switched', type);
         },
         onAttach: function() {
             this.plotChart();

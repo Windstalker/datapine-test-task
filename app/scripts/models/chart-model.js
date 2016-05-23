@@ -7,7 +7,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
         },
         idAttribute: 'id',
         exportUrl: 'http://export.highcharts.com/',
-        onTypeChanged: function(type) {
+        onTypeSwitched: function(type) {
             var chartAttr = this.get('chart');
             this.set('chart', _.extend({}, chartAttr, {type: type}));
         },

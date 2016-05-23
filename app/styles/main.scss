@@ -14,6 +14,10 @@ body {
     color: $ming;
 }
 
+p {
+    margin-bottom: 1rem;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -67,4 +71,10 @@ body {
     position: relative;
     overflow: hidden;
     width: 100%;
+}
+
+pre.code {
+    @extend code;
+    white-space: pre;
+    margin-bottom: 2rem
 }
