@@ -49,6 +49,20 @@ body {
     padding: 1rem 1rem 2rem;
 }
 
+.chart-thumb-wrapper {
+    a {
+        display: block;
+        figcaption {
+            text-align: center;
+        }
+        img {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
 .chart-wrapper {
     position: relative;
     overflow: hidden;

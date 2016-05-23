@@ -1,5 +1,6 @@
 define([
     'marionette',
+    'bluebird',
     '../models/charts-collection',
     '../views/app-view',
     '../views/about',
@@ -8,6 +9,7 @@ define([
     '../views/chart-view',
 ], function(
     Mn,
+    Promise,
     ChartsCollection,
     AppView,
     AboutView,
@@ -25,18 +27,23 @@ define([
 
     var Controller = Mn.Object.extend({
         initialize: function() {
+            var self = this;
             this.charts = new ChartsCollection();
+            this.chartsPromise = Promise.resolve(this.charts.fetch());
+            this.chartsPromise.then(function() {
+                return self.charts.fetchThumbnails();
+            });
             this.appView = new AppView();
             this.appView.render();
             this.appView.showChildView('menu', new MenuView());
+
         },
         showAboutView: function() {
             this.appView.showChildView('page', new AboutView());
         },
         onChartsRoute: function(id) {
             var self = this;
-            var xhr = this.charts.fetch();
-            xhr.done(function() {
+            this.chartsPromise.then(function() {
                 if (id !== null) {
                     return self.showChartDetailsView(id);
                 }

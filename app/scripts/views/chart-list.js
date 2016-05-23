@@ -9,7 +9,8 @@ define([
         className: 'page',
         template: _.template(template),
         collectionEvents: {
-            'sync': 'render'
+            'sync': 'render',
+            'fetch:thumbnails': 'render'
         }
     });
 });
